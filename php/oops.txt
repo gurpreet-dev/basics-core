@@ -1,0 +1,127 @@
+https://www.fullstacktutorials.com/interviews/oops-interview-questions-and-answers-for-experienced-in-php-5.html
+
+Q:- What is a class?
+    A class is a template for an object, a user-defined datatype that contains variables, properties, and methods.
+
+Q:- What is an object?
+    Objects are created from Classes, is an instance of a class that is created dynamically.
+
+Q:- What is different types of Visibility? OR What are access modifiers?
+    Each method and property has its visibility. There are three types of visibility in PHP.
+
+    Types of visibility:
+    - public: Public method or variable can be accessible from anywhere, Means a public method or variable of a class can be called outside of the class or in a subclass.
+    - protected: A protected method or variable can only be called in that class & it's subclass.
+    - private: A private method or variable of a class can only be called inside that class only in which it is declared.
+
+Q:- Types of constructors:
+    - Default constructor
+        A constructor without any parameters is called a default constructor.
+
+    - Parameterized constructor
+        A constructor with at least one parameter is called a parametrized constructor.
+    
+    - Copy Constructor
+        $perObj1 = new Person("Full Stack Tutorials"); // parameterized constructor with name argument
+        $perObj2 = clone $perObj1; // copy constructor initialize $perObj2 with the values of $perObj1
+        echo $perObj2->name;
+    
+    - Static Constructor
+    - Private Constructor
+
+Q:- What is Member Variable and Member function?
+    Member Variable − These are the variables defined inside a class. This data will be invisible to the outside of the class and can be accessed via member functions. These variables are called attribute of the object once an object is created.
+    Member function − These are the function defined inside a class and are used to access object data.
+
+Q:- What is Encapsulation?
+    Wrapping up member variables and methods together into a single unit (i.e. Class) is called Encapsulation.
+
+Q:- What is Abstraction?
+    Abstraction is a concept in which implementation details are hidden.
+
+    - Abstract Class: Abstract class are class which contains atleast one or more abstract method (functions).
+    - Abstract Method: Abstract method is a method (function) which is declared, but not defined.
+
+    Abstract methods cannot be defined as private.
+
+    abstract class TV {
+        private $isOn = false;
+        abstract function getBrand();
+        public function turnOnTV() {
+            $this->isOn = true;
+        }
+        public function turnOffTV() {
+            $this->isOn = false;
+        }
+    }
+    class Panasonic extends TV {
+        public function getBrand(){
+            return "Panasonic";
+        }
+    }
+    class Sony extends TV {
+        public function getBrand(){
+            return "Sony";
+        }
+    }
+
+Q:- When to use abstract class and interface in PHP? Explain with real world Example?
+    - Abstract class:
+      Abstract Class is used when you something you know (Concrete Methods) and something which you don't know (Abstract Methods).
+    - Interface:
+      Interface is used when you don't know anything about implementation. (All methods are abstract)
+
+Q:- Explain about polymorphism?
+    It is simply "One thing, can use in different forms". Technically, it is the ability to redefine methods for derived classes.
+
+    #Example: One Class (Car) can extend two classes (Audi & BMW).
+
+Q:- Types of Polymorphism?
+    - Method Overloadning - NOT SUPPORTED IN PHP
+    - Method Overriding - Declaring of same function in a class and its inherited class.
+
+Q:- What is final keyword?
+    PHP 5 introduces the final keyword, which prevents child classes from overriding a method by prefixing the definition with the final. If the class itself is being defined final then it cannot be extended.
+
+    - Final class will not be inherited.
+    - Final function or method will not be used in inherited class.
+
+Q:- What is STATIC keyword and what is it's use in PHP ?
+    Declaring class member variables or methods as static makes them accessible without needing an instantiation of the class. A member declared as static cannot be accessed with an instantiated class object (though a static method can).
+
+    class testClass{ 
+        public static function testMethod(){ 
+            echo "This is static method."; 
+        } 
+    } 
+    echo testClass::testMethod();
+
+    //Output:
+    This is static method.
+
+Q:- What is Traits in PHP?
+    Traits are a mechanism for code reuse in single inheritance languages such as PHP.
+
+    - It is not possible to instantiate a Trait.
+    - Multiple Traits can be inserted into a class by listing them in the use statement, separated by commas(,).
+
+    - If two Traits insert a method with the same name, a fatal error is produced.
+
+Q:- What is Namespaces in PHP?
+    Namespaces is used to avoid conflicting definitions and enables more flexibility and organization in your code base.
+
+    - In PHP version 5.3 a new feature was added to the language known as namespace.
+    - In PHP we can’t have two classes that have same name. Name should be be unique. The issue with this restriction is that if you are using any third party library which has a class named User, then you can’t create your own class with name User.
+
+    namespace Google;
+    Class Search {
+        public function query() {
+            return 'Searching Google';
+        }
+    }
+    namespace Bing;
+    Class Search {
+        public function query() {
+            return 'Searching Bing';
+        }
+    }
